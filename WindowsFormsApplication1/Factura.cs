@@ -15,25 +15,23 @@ namespace WindowsFormsApplication1
 {
     public partial class Factura : Form
     {
-        AccesoWebService acceso;
-        public Factura(AccesoWebService acceso)
+        public Factura()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         private void Factura_Load(object sender, EventArgs e)
         {
-            string json = acceso.ObtenerDatos("facturas");
+            //string json = acceso.ObtenerDatos("facturas");
 
-            var listaFacturas = JsonConvert.DeserializeObject<Objetos.Facturas.RootObject>(json);
+            //var listaFacturas = JsonConvert.DeserializeObject<Objetos.Facturas.RootObject>(json);
 
-            dataGridView1.DataSource = listaFacturas.facturas;
+            //dataGridView1.DataSource = listaFacturas.facturas;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            NuevaFactura nFactura = new NuevaFactura(acceso);
+            NuevaFactura nFactura = new NuevaFactura();
             nFactura.TopLevel = false;
             nFactura.AutoScroll = true;
             this.Parent.Controls.Add(nFactura);

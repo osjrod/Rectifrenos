@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Datos;
 
 namespace WindowsFormsApplication1
 {
     public partial class Principal : Form
     {
-        AccesoWebService acceso = new AccesoWebService();
-
         private int imageNumber = 1;
         public Principal()
         {
@@ -24,7 +23,7 @@ namespace WindowsFormsApplication1
         private void button8_Click(object sender, EventArgs e)
         {
             if(!this.panel2.HasChildren){
-                Factura facturas = new Factura(acceso);
+                Factura facturas = new Factura();
                 facturas.TopLevel = false;
                 facturas.AutoScroll = true;
                 this.panel2.Controls.Add(facturas);
@@ -39,7 +38,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Factura facturas = new Factura(acceso);
+                    Factura facturas = new Factura();
                     facturas.TopLevel = false;
                     facturas.AutoScroll = true;
                     this.panel2.Controls.Add(facturas);
@@ -73,7 +72,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Proveedores proveedores = new Proveedores(acceso);
+                Proveedores proveedores = new Proveedores();
                 proveedores.TopLevel = false;
                 proveedores.AutoScroll = true;
                 this.panel2.Controls.Add(proveedores);
@@ -88,7 +87,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Proveedores proveedores = new Proveedores(acceso);
+                    Proveedores proveedores = new Proveedores();
                     proveedores.TopLevel = false;
                     proveedores.AutoScroll = true;
                     this.panel2.Controls.Add(proveedores);
@@ -102,7 +101,7 @@ namespace WindowsFormsApplication1
 
             if (!this.panel2.HasChildren)
             {
-                Inventario inventario = new Inventario(acceso);
+                Inventario inventario = new Inventario();
                 inventario.TopLevel = false;
                 inventario.AutoScroll = true;
                 this.panel2.Controls.Add(inventario);
@@ -117,7 +116,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Inventario inventario = new Inventario(acceso);
+                    Inventario inventario = new Inventario();
                     inventario.TopLevel = false;
                     inventario.AutoScroll = true;
                     this.panel2.Controls.Add(inventario);
@@ -131,7 +130,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Clientes clientes = new Clientes(acceso);
+                Clientes clientes = new Clientes();
                 clientes.TopLevel = false;
                 clientes.AutoScroll = true;
                 this.panel2.Controls.Add(clientes);
@@ -146,7 +145,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Clientes clientes = new Clientes(acceso);
+                    Clientes clientes = new Clientes();
                     clientes.TopLevel = false;
                     clientes.AutoScroll = true;
                     this.panel2.Controls.Add(clientes);
@@ -169,7 +168,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Proformas1 proforma1 = new Proformas1(acceso);
+                Proformas1 proforma1 = new Proformas1();
                 proforma1.TopLevel = false;
                 proforma1.AutoScroll = true;
                 this.panel2.Controls.Add(proforma1);
@@ -184,7 +183,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Proformas1 proforma1 = new Proformas1(acceso);
+                    Proformas1 proforma1 = new Proformas1();
                     proforma1.TopLevel = false;
                     proforma1.AutoScroll = true;
                     this.panel2.Controls.Add(proforma1);
@@ -197,7 +196,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Proformas2 proforma2 = new Proformas2(acceso);
+                Proformas2 proforma2 = new Proformas2();
                 proforma2.TopLevel = false;
                 proforma2.AutoScroll = true;
                 this.panel2.Controls.Add(proforma2);
@@ -212,7 +211,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Proformas2 proforma2 = new Proformas2(acceso);
+                    Proformas2 proforma2 = new Proformas2();
                     proforma2.TopLevel = false;
                     proforma2.AutoScroll = true;
                     this.panel2.Controls.Add(proforma2);

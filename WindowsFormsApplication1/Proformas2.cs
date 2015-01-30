@@ -12,11 +12,9 @@ namespace WindowsFormsApplication1
 {
     public partial class Proformas2 : Form
     {
-        AccesoWebService acceso;
-        public Proformas2(AccesoWebService acceso)
+        public Proformas2()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
     }
 }

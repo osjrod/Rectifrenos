@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.Objetos
 {
-    class Proveedores
+    class oProveedores
     {
-        public class Proveedore
+        public class Proveedor
         {
             public string id { get; set; }
             public string codigo_proveedor { get; set; }
@@ -22,10 +22,9 @@ namespace WindowsFormsApplication1.Objetos
             public string updated_at { get; set; }
         }
 
-        public class RootObject
+        public class Proveedores
         {
-            public bool resultados { get; set; }
-            public List<Proveedore> proveedores { get; set; }
+            public List<Proveedor> proveedores { get; set; }
         }
     }
 }

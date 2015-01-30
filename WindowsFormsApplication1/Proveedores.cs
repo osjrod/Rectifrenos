@@ -12,24 +12,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using WindowsFormsApplication1.Datos;
+using WindowsFormsApplication1.Logica;
+using WindowsFormsApplication1.Objetos;
 
 
 namespace WindowsFormsApplication1
 {
     public partial class Proveedores : Form
     {
-        AccesoWebService acceso;
-        public Proveedores(AccesoWebService acceso)
+        lProveedores logicaProveedores = new lProveedores();
+        string id = String.Empty;
+        public Proveedores()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         private void Proveedores_Load(object sender, EventArgs e)
         {
-            string json = acceso.ObtenerDatos("proveedores");
-            var listaProveedores = JsonConvert.DeserializeObject<Objetos.Proveedores.RootObject>(json);
-            dataGridView1.DataSource = listaProveedores.proveedores;
+            var todos = logicaProveedores.proveedores();
+            dataGridView1.DataSource = todos;
+            MessageBox.Show("");
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -51,9 +54,9 @@ namespace WindowsFormsApplication1
                 parametros.Add("telefono_3", edicionProveedores.Telefono3);
 
                 string response;
-                response = acceso.InsertarDatos("proveedores",parametros);
+                //response = acceso.InsertarDatos("proveedores",parametros);
 
-                MessageBox.Show(response);
+                //MessageBox.Show(response);
 
                 Proveedores_Load(sender,e);
 

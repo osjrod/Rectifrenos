@@ -24,11 +24,9 @@ namespace WindowsFormsApplication1
         int? ver = null;
         int numero;
 
-        AccesoWebService acceso;
-        public NuevaFactura(AccesoWebService acceso)
+        public NuevaFactura()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         
@@ -47,25 +45,25 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                string json = acceso.ObtenerDatos("productos/codigo/" + dataGridView1.CurrentRow.Cells[0].Value.ToString().ToUpper());
+                //string json = acceso.ObtenerDatos("productos/codigo/" + dataGridView1.CurrentRow.Cells[0].Value.ToString().ToUpper());
 
-                var producto = JsonConvert.DeserializeObject<Objetos.Productos.RootObject2>(json);
+                //var producto = JsonConvert.DeserializeObject<Objetos.Productos.RootObject2>(json);
 
 
-                if (producto.resultados == true )
-                {
-                    dataGridView1.CurrentRow.Cells[1].Value = producto.producto.descripcion;
-                    dataGridView1.CurrentRow.Cells[3].Value = producto.producto.precio_venta;
-                    decimal venta = producto.producto.precio_venta;
-                    decimal importe = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value) * venta;
-                    dataGridView1.CurrentRow.Cells[4].Value = importe;
+                //if (producto.resultados == true )
+                //{
+                //    dataGridView1.CurrentRow.Cells[1].Value = producto.producto.descripcion;
+                //    dataGridView1.CurrentRow.Cells[3].Value = producto.producto.precio_venta;
+                //    decimal venta = producto.producto.precio_venta;
+                //    decimal importe = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value) * venta;
+                //    dataGridView1.CurrentRow.Cells[4].Value = importe;
 
-                }
-                else
-                {
-                    MessageBox.Show("El codigo introducido no coincide con ningun articulo", "Error");
-                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("El codigo introducido no coincide con ningun articulo", "Error");
+                //    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                //}
 
             }
 
@@ -201,13 +199,13 @@ namespace WindowsFormsApplication1
         private void buscarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            BuscarCliente buscar = new BuscarCliente(acceso);
-            buscar.ShowDialog();
+            //BuscarCliente buscar = new BuscarCliente(acceso);
+            //buscar.ShowDialog();
 
-            if (buscar.Encontrado != "")
-            {
-                txtcliente.Text = buscar.Encontrado;
-            }
+            //if (buscar.Encontrado != "")
+            //{
+            //    txtcliente.Text = buscar.Encontrado;
+            //}
             
 
         }

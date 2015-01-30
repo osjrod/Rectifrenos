@@ -18,11 +18,9 @@ namespace WindowsFormsApplication1
         DataTable datos;
         String encontrado = "";
 
-        AccesoWebService acceso;
-        public BuscarCliente(AccesoWebService acceso)
+        public BuscarCliente()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -34,15 +32,15 @@ namespace WindowsFormsApplication1
 
         private void BuscarCliente_Load(object sender, EventArgs e)
         {
-            string json = acceso.ObtenerDatos("clientes");
+           // string json = acceso.ObtenerDatos("clientes");
 
-            var listaClientes = JsonConvert.DeserializeObject<Objetos.Clientes.RootObject>(json);
+           // var listaClientes = JsonConvert.DeserializeObject<Objetos.Clientes.RootObject>(json);
 
 
-           datos = Objetos.data.ConvertirListaClientesToDataTable(listaClientes.clientes);
+           //datos = Objetos.data.ConvertirListaClientesToDataTable(listaClientes.clientes);
 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = datos;
+           // dataGridView1.AutoGenerateColumns = false;
+           // dataGridView1.DataSource = datos;
         }
 
         private void toolStripTextBox1_Click(object sender, EventArgs e)

@@ -14,18 +14,16 @@ namespace WindowsFormsApplication1
 {
     public partial class Clientes : Form
     {
-        AccesoWebService acceso;
-        public Clientes(AccesoWebService acceso)
+        public Clientes()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            string json = acceso.ObtenerDatos("clientes");
-            var listaClientes = JsonConvert.DeserializeObject<Objetos.Clientes.RootObject>(json);
-            dataGridView1.DataSource = listaClientes.clientes;
+            //string json = acceso.ObtenerDatos("clientes");
+            //var listaClientes = JsonConvert.DeserializeObject<Objetos.Clientes.RootObject>(json);
+            //dataGridView1.DataSource = listaClientes.clientes;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -51,9 +49,9 @@ namespace WindowsFormsApplication1
                 parametros.Add("observaciones", edicionClientes.Telefono3);
 
                 string response;
-                response = acceso.InsertarDatos("clientes", parametros);
+                //response = acceso.InsertarDatos("clientes", parametros);
 
-                MessageBox.Show(response);
+                //MessageBox.Show(response);
 
                 Clientes_Load(sender, e);
 

@@ -16,20 +16,18 @@ namespace WindowsFormsApplication1
 {
     public partial class Inventario : Form
     {
-       AccesoWebService acceso;
-        public Inventario(AccesoWebService acceso)
+        public Inventario()
         {
             InitializeComponent();
-            this.acceso = acceso;
         }
 
         private void Inventario_Load(object sender, EventArgs e)
         {
-            string json = acceso.ObtenerDatos("productos");
+            //string json = acceso.ObtenerDatos("productos");
 
-            var listaProductos = JsonConvert.DeserializeObject<Objetos.Productos.RootObject>(json);
+            //var listaProductos = JsonConvert.DeserializeObject<Objetos.Productos.RootObject>(json);
 
-            dataGridView1.DataSource = listaProductos.productos;
+            //dataGridView1.DataSource = listaProductos.productos;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -56,10 +54,10 @@ namespace WindowsFormsApplication1
                 parametros.Add("codigo_pedido", "1234");
 
                 string response;
-                response = acceso.InsertarDatos("productos", parametros);
+                //response = acceso.InsertarDatos("productos", parametros);
 
                 // Decode and display the response.
-                MessageBox.Show(response);
+                //MessageBox.Show(response);
 
                 Inventario_Load(sender, e);
 

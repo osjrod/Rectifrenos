@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
@@ -7,47 +8,66 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1
+namespace WindowsFormsApplication1.Datos
 {
-    public class AccesoWebService
+    class Conexion
     {
-        public string ObtenerDatos(string url)
+        RestClient client = new RestClient();
+
+        public Conexion()
         {
-            string sURL;
-            sURL = "http://rectifrenosdelnorte.com/"+url;
-            WebRequest wrGETURL;
-
-            ICredentials credenciales = new NetworkCredential("admin", "admin");
-
-            wrGETURL = WebRequest.Create(sURL);
-
-            wrGETURL.Credentials = credenciales;
-
-            Stream objStream;
-            objStream = wrGETURL.GetResponse().GetResponseStream();
-            StreamReader objReader = new StreamReader(objStream);
-
-            string json = objReader.ReadToEnd().Substring(2);
-
-            return json;
+            client.BaseUrl = "http://rectifrenosdelnorte.com";
+            client.Authenticator = new HttpBasicAuthenticator("admin", "admin");
         }
 
-        public string InsertarDatos(string url, NameValueCollection parametros)
+        public string httpGet(string recurso)
         {
-            string uriString = "http://rectifrenosdelnorte.com/"+url;
+            RestRequest request = new RestRequest(recurso, Method.GET);
 
-            WebClient myWebClient = new WebClient();
-
-            ICredentials credenciales = new NetworkCredential("admin", "admin");
-
-            myWebClient.Credentials = credenciales;
-
-            NameValueCollection myNameValueCollection = parametros;
-
-            byte[] responseArray =
-            myWebClient.UploadValues(uriString, "POST", myNameValueCollection);
-
-            return Encoding.ASCII.GetString(responseArray);
+            RestResponse response = client.Execute(request);
+            return response.Content;
         }
+
+        public string httpGet(string recurso, string id)
+        {
+            RestRequest request = new RestRequest(recurso + "/" + id, Method.GET);
+
+            RestResponse response = client.Execute(request);
+            return response.Content;
+        }
+
+        public string httpPost(string recurso, object objeto)
+        {
+            RestRequest request = new RestRequest(recurso, Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(objeto);
+
+            RestResponse response = client.Execute(request);
+            return response.Content;
+
+        }
+
+        public string httpPut(string recurso, string id, object objeto)
+        {
+            RestRequest request = new RestRequest(recurso + "/" + id, Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(objeto);
+
+            RestResponse response = client.Execute(request);
+            return response.Content;
+
+        }
+
+        public string httpDelete(string recurso, string id)
+        {
+
+            RestRequest request = new RestRequest(recurso + "/" + id, Method.DELETE);
+            request.AddParameter("id", id);
+
+            RestResponse response = client.Execute(request);
+            return response.Content;
+        }
+
+
     }
 }
