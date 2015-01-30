@@ -8,15 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.Datos;
+using WindowsFormsApplication1.Logica;
+using WindowsFormsApplication1.Objetos;
 
 namespace WindowsFormsApplication1
 {
     public partial class Principal : Form
     {
+        lProveedores logicaProveedores = new lProveedores();
+        oProveedores.Proveedores listaProveedores;
+
         private int imageNumber = 1;
         public Principal()
         {
             InitializeComponent();
+            
+            listaProveedores = logicaProveedores.proveedores();
             timer1.Start();
         }
 
@@ -72,7 +79,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Proveedores proveedores = new Proveedores();
+                Proveedores proveedores = new Proveedores(listaProveedores);
                 proveedores.TopLevel = false;
                 proveedores.AutoScroll = true;
                 this.panel2.Controls.Add(proveedores);
@@ -87,7 +94,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Proveedores proveedores = new Proveedores();
+                    Proveedores proveedores = new Proveedores(listaProveedores);
                     proveedores.TopLevel = false;
                     proveedores.AutoScroll = true;
                     this.panel2.Controls.Add(proveedores);

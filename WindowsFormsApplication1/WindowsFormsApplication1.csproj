@@ -249,6 +249,7 @@
       <DependentUpon>Proveedores.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\WindowsFormsApplication1.Objetos.oProveedores+Proveedores.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

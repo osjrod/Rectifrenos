@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.Objetos
 {
-    class oProveedores
+    public class oProveedores
     {
         public class Proveedor
         {

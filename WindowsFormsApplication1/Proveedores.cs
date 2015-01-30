@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -21,18 +22,19 @@ namespace WindowsFormsApplication1
 {
     public partial class Proveedores : Form
     {
-        lProveedores logicaProveedores = new lProveedores();
+        oProveedores.Proveedores todos;
         string id = String.Empty;
-        public Proveedores()
+        public Proveedores(oProveedores.Proveedores todos)
         {
             InitializeComponent();
+            this.todos = todos;
+            timer1.Start();
+            
         }
 
         private void Proveedores_Load(object sender, EventArgs e)
         {
-            var todos = logicaProveedores.proveedores();
-            dataGridView1.DataSource = todos;
-            MessageBox.Show("");
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -93,6 +95,33 @@ namespace WindowsFormsApplication1
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Proveedores_Shown(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Proveedores_ChangeUICues(object sender, UICuesEventArgs e)
+        {
+
+        }
+
+        private void Proveedores_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+           
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = todos.proveedores;
+            timer1.Stop();
         }
     }
 }
