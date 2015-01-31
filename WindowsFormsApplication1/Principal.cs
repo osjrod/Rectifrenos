@@ -15,15 +15,13 @@ namespace WindowsFormsApplication1
 {
     public partial class Principal : Form
     {
-        lProveedores logicaProveedores = new lProveedores();
-        oProveedores.Proveedores listaProveedores;
+       // lProveedores logicaProveedores = new lProveedores();
+       // oProveedores.Proveedores listaProveedores;
 
         private int imageNumber = 1;
         public Principal()
         {
             InitializeComponent();
-            
-            listaProveedores = logicaProveedores.proveedores();
             timer1.Start();
         }
 
@@ -58,6 +56,7 @@ namespace WindowsFormsApplication1
         {
             pictureBox1.Width = this.panel1.Width-20;
             pictureBox1.Height = this.panel1.Width - 20;
+            Conexion conexion = Conexion.getSingleton();
         }
 
         private void loadNextImage()
@@ -79,7 +78,7 @@ namespace WindowsFormsApplication1
         {
             if (!this.panel2.HasChildren)
             {
-                Proveedores proveedores = new Proveedores(listaProveedores);
+                Proveedores proveedores = new Proveedores();
                 proveedores.TopLevel = false;
                 proveedores.AutoScroll = true;
                 this.panel2.Controls.Add(proveedores);
@@ -94,7 +93,7 @@ namespace WindowsFormsApplication1
                 if (control.Length == 0)
                 {
                     this.panel2.Controls.Clear();
-                    Proveedores proveedores = new Proveedores(listaProveedores);
+                    Proveedores proveedores = new Proveedores();
                     proveedores.TopLevel = false;
                     proveedores.AutoScroll = true;
                     this.panel2.Controls.Add(proveedores);

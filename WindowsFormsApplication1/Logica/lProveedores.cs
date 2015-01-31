@@ -13,11 +13,10 @@ namespace WindowsFormsApplication1.Logica
 {
     class lProveedores
     {
-        Conexion conexion = new Conexion();
 
         public oProveedores.Proveedor proveedor(string id)
         {
-            string json = conexion.httpGet("proveedores", id);
+            string json = Conexion.httpGet("proveedores", id);
             json = json.Substring(3);
 
             oProveedores.Proveedor proveedor = JsonConvert.DeserializeObject<oProveedores.Proveedor>(json);
@@ -27,8 +26,8 @@ namespace WindowsFormsApplication1.Logica
 
         public oProveedores.Proveedores proveedores()
         {
-      
-            string json = conexion.httpGet("proveedores");
+
+            string json = Conexion.httpGet("proveedores");
             json = json.Substring(3);
 
             var proveedores = JsonConvert.DeserializeObject<oProveedores.Proveedores>(json);
@@ -47,7 +46,7 @@ namespace WindowsFormsApplication1.Logica
                                                                             telefono_3 = telefono_3
                                                                             };
 
-            string mensaje = conexion.httpPost("proveedores",proveedor);
+            string mensaje = Conexion.httpPost("proveedores", proveedor);
 
             return mensaje;
         }
@@ -67,14 +66,14 @@ namespace WindowsFormsApplication1.Logica
                 updated_at = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
             };
 
-            string mensaje = conexion.httpPut("proveedores", id, proveedor);
+            string mensaje = Conexion.httpPut("proveedores", id, proveedor);
 
             return mensaje;
         }
 
         public string deleteProveedor(string id)
         {
-            string mensaje = conexion.httpDelete("proveedores", id);
+            string mensaje = Conexion.httpDelete("proveedores", id);
 
             return mensaje;
         }

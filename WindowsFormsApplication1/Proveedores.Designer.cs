@@ -84,7 +84,6 @@
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 11;
             this.label5.Text = "Proveedor";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // tollMarcas
             // 
@@ -139,7 +138,6 @@
             this.btnRefrescar.Size = new System.Drawing.Size(59, 43);
             this.btnRefrescar.Text = "Refrescar";
             this.btnRefrescar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // dataGridView1
             // 
@@ -170,10 +168,6 @@
             this.Name = "Proveedores";
             this.Text = "Proveedores";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Proveedores_Load);
-            this.Shown += new System.EventHandler(this.Proveedores_Shown);
-            this.MouseEnter += new System.EventHandler(this.Proveedores_MouseEnter);
-            this.ChangeUICues += new System.Windows.Forms.UICuesEventHandler(this.Proveedores_ChangeUICues);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tollMarcas.ResumeLayout(false);

@@ -22,18 +22,13 @@ namespace WindowsFormsApplication1
 {
     public partial class Proveedores : Form
     {
-        oProveedores.Proveedores todos;
+        lProveedores logicaProveedores = new lProveedores();
         string id = String.Empty;
-        public Proveedores(oProveedores.Proveedores todos)
+        public Proveedores()
         {
             InitializeComponent();
-            this.todos = todos;
-            timer1.Start();
             
-        }
-
-        private void Proveedores_Load(object sender, EventArgs e)
-        {
+            timer1.Start();
             
         }
 
@@ -60,7 +55,6 @@ namespace WindowsFormsApplication1
 
                 //MessageBox.Show(response);
 
-                Proveedores_Load(sender,e);
 
             }
 
@@ -92,35 +86,11 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Proveedores_Shown(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Proveedores_ChangeUICues(object sender, UICuesEventArgs e)
-        {
-
-        }
-
-        private void Proveedores_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnRefrescar_Click(object sender, EventArgs e)
-        {
-           
-            
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = todos.proveedores;
+            var listaProveedores =logicaProveedores.proveedores();
+            dataGridView1.DataSource = listaProveedores.proveedores;
             timer1.Stop();
         }
     }
